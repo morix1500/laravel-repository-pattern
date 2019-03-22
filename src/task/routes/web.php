@@ -14,4 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'TaskController@index')->name('home');
-Route::post('/tasks', 'TaskController@create')->name('task.create');
+Route::post('/tasks', 'TaskController@create')->name('tasks.create');
+
+Route::get('/tasks/{id}/edit', 'TaskController@edit')->name('tasks.edit');
+Route::post('/tasks/{id}/edit', 'TaskController@editComplete')->name('tasks.complete');

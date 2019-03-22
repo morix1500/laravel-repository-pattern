@@ -22,4 +22,14 @@ class TaskService extends Service
     {
         return $this->taskRepository->list($user_id);
     }
+
+    public function getTask(int $id, int $user_id)
+    {
+        return $this->taskRepository->get($id, $user_id);
+    }
+
+    public function updateTask(int $id, int $user_id, array $param)
+    {
+        return $this->taskRepository->update($id, $user_id, $param);
+    }
 }

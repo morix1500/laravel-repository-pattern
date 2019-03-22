@@ -35,6 +35,32 @@ class TaskServiceTest extends TestCase
         $result = $this->service->getTasks(1);
         $this->assertSame(10, count($result));
     }
+
+    public function testGetTask()
+    {
+        $id = 1;
+        $user_id = 1;
+
+        $result = $this->service->getTask($id, $user_id);
+        $this->assertSame(1, count($result));
+        $this->assertSame(1, $result->id);
+        $this->assertSame(1, $result->user_id);
+        $this->assertNotNull($result->contents);
+    }
+
+    public function testUpdateTask()
+    {
+        $id = 1;
+        $user_id = 1;
+        $param = array(
+            'contents' => "hoge!",
+        );
+        $result = $this->service->updateTask($id, $user_id, $param);
+        $this->assertSame(1, count($result));
+        $this->assertSame(1, $result->id);
+        $this->assertSame(1, $result->user_id);
+        $this->assertSame($param["contents"], $result->contents);
+    }
 }
 
 class StubTaskServiceTaskRepository implements \App\Repositories\TaskRepositoryInterface
@@ -53,5 +79,24 @@ class StubTaskServiceTaskRepository implements \App\Repositories\TaskRepositoryI
         return factory(\App\Models\Task::class, 10)->make([
             'user_id' => $user_id,
         ]);
+    }
+
+    public function update(int $id, int $user_id, array $param)
+    {
+        return factory(\App\Models\Task::class)
+            ->make([
+                'id' => $id,
+                'user_id' => $user_id,
+                'contents' => $param["contents"],
+            ]);
+    }
+
+    public function get(int $id, int $user_id)
+    {
+        return factory(\App\Models\Task::class)
+            ->make([
+                'id' => $id,
+                'user_id' => $user_id,
+            ]);
     }
 }

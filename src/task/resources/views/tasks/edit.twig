@@ -1,0 +1,11 @@
+{% extends "layouts/default" %}
+
+{% block content %}
+{% include "common/error" %}
+
+<form action="" method="POST">
+  <input type="text" name="contents" value="{{ contents }}" />
+  <input type="submit" value="Save" />
+  {{ csrf_field() }}
+</form>
+{% endblock %}

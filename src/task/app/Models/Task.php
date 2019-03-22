@@ -16,4 +16,9 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeCurrentUser($query, int $user_id)
+    {
+        $query->where('user_id', $user_id);
+    }
 }

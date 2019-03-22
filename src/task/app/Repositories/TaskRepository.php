@@ -23,4 +23,18 @@ class TaskRepository implements TaskRepositoryInterface
     function list(int $user_id) {
         return $this->model->where('user_id', $user_id)->get();
     }
+
+    public function get(int $id, int $user_id)
+    {
+        return $this->model->currentUser($user_id)->find($id);
+    }
+
+    public function update(int $id, int $user_id, array $param)
+    {
+        $task = $this->get($id, $user_id);
+        if (!empty($task)) {
+            $task->fill($param)->save();
+        }
+        return $task;
+    }
 }

@@ -34,4 +34,26 @@ class TaskController extends Controller
 
         return redirect('/');
     }
+
+    public function edit(Request $req, int $task_id)
+    {
+        $task = $this->taskService->getTask($task_id, $req->user()->id);
+
+        return view('tasks.edit', [
+            'contents' => $task->contents,
+        ]);
+    }
+
+    public function editComplete(Request $req, int $task_id)
+    {
+        $this->validate($req, [
+            'contents' => 'required|max:100',
+        ]);
+        $param = array(
+            'contents' => $req->contents,
+        );
+        $task = $this->taskService->updateTask($task_id, $req->user()->id, $param);
+
+        return redirect('/');
+    }
 }
