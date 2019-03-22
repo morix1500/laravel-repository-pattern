@@ -13,8 +13,13 @@ class TaskService extends Service
         $this->taskRepository = $taskRepository;
     }
 
-    public function registerTask(string $user_id, string $contents)
+    public function registerTask(int $user_id, string $contents)
     {
         return $this->taskRepository->create($user_id, $contents);
+    }
+
+    public function GetTasks(int $user_id)
+    {
+        return $this->taskRepository->list($user_id);
     }
 }
