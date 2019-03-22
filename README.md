@@ -1,7 +1,17 @@
+## 起動方法
 
 ```
-$ vim .env
+$ mv .env-local .env
 
+# 起動
+$ docker-compose up -d
+
+# localhost:8000 で閲覧できる
+```
+
+## Memo
+
+```
 # composer
 $ composer require predis/predis
 
@@ -29,4 +39,7 @@ $ mkdir app/Repositories
 # Twig Install
 $ composer require rcrowe/twigbridge
 $ php artisan vendor:publish --provider="TwigBridge\ServiceProvider"
+
+# Request作成
+$ php artisan make:request TaskRequest
 ```
