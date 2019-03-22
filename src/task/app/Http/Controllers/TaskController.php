@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
 
@@ -24,12 +25,8 @@ class TaskController extends Controller
         ]);
     }
 
-    public function create(Request $req)
+    public function create(TaskRequest $req)
     {
-        $this->validate($req, [
-            'contents' => 'required|max:100',
-        ]);
-
         $this->taskService->registerTask($req->user()->id, $req->contents);
 
         return redirect('/');
@@ -44,14 +41,12 @@ class TaskController extends Controller
         ]);
     }
 
-    public function editComplete(Request $req, int $task_id)
+    public function editComplete(TaskRequest $req, int $task_id)
     {
-        $this->validate($req, [
-            'contents' => 'required|max:100',
-        ]);
         $param = array(
             'contents' => $req->contents,
         );
+
         $task = $this->taskService->updateTask($task_id, $req->user()->id, $param);
 
         return redirect('/');

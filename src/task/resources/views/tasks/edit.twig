@@ -4,7 +4,7 @@
 {% include "common/error" %}
 
 <form action="" method="POST">
-  <input type="text" name="contents" value="{{ contents }}" />
+  <input type="text" name="contents" value="{{ old('contents', contents) }}" />
   <input type="submit" value="Save" />
   {{ csrf_field() }}
 </form>
