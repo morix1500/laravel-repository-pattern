@@ -32,7 +32,7 @@ class TaskServiceTest extends TestCase
 
     public function testGetTasks()
     {
-        $result = $this->service->GetTasks(1);
+        $result = $this->service->getTasks(1);
         $this->assertSame(10, count($result));
     }
 }

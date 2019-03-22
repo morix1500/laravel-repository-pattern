@@ -14,3 +14,4 @@
 Auth::routes();
 
 Route::get('/', 'TaskController@index')->name('home');
+Route::post('/tasks', 'TaskController@create')->name('task.create');

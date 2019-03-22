@@ -1,0 +1,22 @@
+{% extends "layouts/default" %}
+
+{% block content %}
+{% include "common/error" %}
+<form action="{{ route('task.create') }}" method="POST">
+  <input type="text" name="contents" />
+  <input type="submit" value="Save" />
+  {{ csrf_field() }}
+</form>
+
+<div class="tasks">
+  <ul>
+    {% for task in tasks %}
+    <li>
+      <p>{{ task.contents }}</p>
+      <p><a href="">Update</a></p>
+      <p><a href="">Delete</a></p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
