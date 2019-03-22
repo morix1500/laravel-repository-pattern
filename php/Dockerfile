@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.1-fpm-alpine
 
 RUN apk --update add vim freetype-dev libjpeg-turbo-dev libpng-dev shadow && \
     docker-php-ext-install pdo_mysql mbstring gd zip
