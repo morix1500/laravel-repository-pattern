@@ -37,4 +37,9 @@ class TaskRepository implements TaskRepositoryInterface
         }
         return $task;
     }
+
+    public function delete(int $id, int $user_id)
+    {
+        $this->model->currentUser($user_id)->where('id', $id)->delete();
+    }
 }

@@ -32,4 +32,9 @@ class TaskService extends Service
     {
         return $this->taskRepository->update($id, $user_id, $param);
     }
+
+    public function deleteTask(int $id, int $user_id)
+    {
+        return $this->taskRepository->delete($id, $user_id);
+    }
 }

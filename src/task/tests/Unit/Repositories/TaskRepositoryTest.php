@@ -88,4 +88,19 @@ class TaskRepositoryTest extends TestCase
         $result = $this->repo->get($task2->id, $current_user_id);
         $this->assertNull($result);
     }
+
+    public function testDeleteTask()
+    {
+        $current_user_id = 5;
+        // insert test data
+        $task1 = $this->repo->create($current_user_id, "test1");
+        $task2 = $this->repo->create($current_user_id, "test2");
+
+        // test
+        $this->repo->delete($task1->id, $current_user_id);
+
+        $result = $this->repo->list($current_user_id);
+        $this->assertEquals(1, count($result));
+        $this->assertEquals("test2", $result[0]->contents);
+    }
 }

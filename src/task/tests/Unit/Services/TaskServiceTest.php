@@ -61,6 +61,14 @@ class TaskServiceTest extends TestCase
         $this->assertSame(1, $result->user_id);
         $this->assertSame($param["contents"], $result->contents);
     }
+
+    public function testDeleteTask()
+    {
+        $id = 1;
+        $user_id = 1;
+        $this->service->deleteTask($id, $user_id);
+        $this->assertTrue(true);
+    }
 }
 
 class StubTaskServiceTaskRepository implements \App\Repositories\TaskRepositoryInterface
@@ -99,4 +107,7 @@ class StubTaskServiceTaskRepository implements \App\Repositories\TaskRepositoryI
                 'user_id' => $user_id,
             ]);
     }
+
+    public function delete(int $id, int $user_id)
+    {}
 }

@@ -7,4 +7,5 @@ interface TaskRepositoryInterface
     public function list(int $user_id);
     public function get(int $id, int $user_id);
     public function update(int $id, int $user_id, array $param);
+    public function delete(int $id, int $user_id);
 }

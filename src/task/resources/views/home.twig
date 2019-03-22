@@ -14,7 +14,7 @@
     <li>
       <p>{{ task.contents }}</p>
       <p><a href="{{ route('tasks.edit', task.id) }}">Update</a></p>
-      <p><a href="">Delete</a></p>
+      <p><a href="{{ route('tasks.delete', task.id) }}">Delete</a></p>
     </li>
     {% endfor %}
   </ul>

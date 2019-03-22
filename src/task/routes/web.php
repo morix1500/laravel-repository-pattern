@@ -18,3 +18,4 @@ Route::post('/tasks', 'TaskController@create')->name('tasks.create');
 
 Route::get('/tasks/{id}/edit', 'TaskController@edit')->name('tasks.edit');
 Route::post('/tasks/{id}/edit', 'TaskController@editComplete')->name('tasks.complete');
+Route::get('/tasks/{id}/delete', 'TaskController@delete')->name('tasks.delete');
