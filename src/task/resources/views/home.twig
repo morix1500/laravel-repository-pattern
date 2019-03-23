@@ -17,6 +17,7 @@
       <p><a href="{{ route('tasks.delete', task.id) }}">Delete</a></p>
     </li>
     {% endfor %}
+    {{ tasks.links()|raw }}
   </ul>
 </div>
 {% endblock %}

@@ -42,7 +42,6 @@ class TaskServiceTest extends TestCase
         $user_id = 1;
 
         $result = $this->service->getTask($id, $user_id);
-        $this->assertSame(1, count($result));
         $this->assertSame(1, $result->id);
         $this->assertSame(1, $result->user_id);
         $this->assertNotNull($result->contents);
@@ -56,7 +55,6 @@ class TaskServiceTest extends TestCase
             'contents' => "hoge!",
         );
         $result = $this->service->updateTask($id, $user_id, $param);
-        $this->assertSame(1, count($result));
         $this->assertSame(1, $result->id);
         $this->assertSame(1, $result->user_id);
         $this->assertSame($param["contents"], $result->contents);

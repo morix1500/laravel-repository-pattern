@@ -21,7 +21,7 @@ class TaskRepository implements TaskRepositoryInterface
     }
 
     function list(int $user_id) {
-        return $this->model->where('user_id', $user_id)->get();
+        return $this->model->where('user_id', $user_id)->paginate(3);
     }
 
     public function get(int $id, int $user_id)
