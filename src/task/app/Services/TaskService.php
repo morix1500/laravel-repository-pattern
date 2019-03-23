@@ -20,6 +20,7 @@ class TaskService extends Service
 
     public function getTasks(int $user_id)
     {
+        \Log::info("get task. user id: " . $user_id);
         return $this->taskRepository->list($user_id);
     }
 

@@ -1,6 +1,6 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.3-fpm-alpine
 
-RUN apk --update add vim freetype-dev libjpeg-turbo-dev libpng-dev shadow && \
+RUN apk --update add vim freetype-dev libjpeg-turbo-dev libpng-dev shadow libzip-dev && \
     docker-php-ext-install pdo_mysql mbstring gd zip
 
 ARG PUID=1000

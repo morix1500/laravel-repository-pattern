@@ -55,6 +55,7 @@ class TaskController extends Controller
     public function delete(Request $req, int $task_id)
     {
         $this->taskService->deleteTask($task_id, $req->user()->id);
+        \Log::info("delete task. id: " . $task_id);
 
         return redirect('/');
     }
